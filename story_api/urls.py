@@ -7,10 +7,10 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Authors Haven API",
+        title="Story Stream API",
         default_version="v1",
-        description="API endpoints for Authors Haven API Course",
-        contact=openapi.Contact(email="api.imperfect@gmail.com"),
+        description="API endpoints for Story Stream API Course",
+        contact=openapi.Contact(email="mahirhasan333@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
@@ -21,8 +21,8 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
 ]
 
-admin.site.site_header = "Authors Haven API Admin"
+admin.site.site_header = "Story Stream API Admin"
 
-admin.site.site_title = "Authors Haven API Admin Portal"
+admin.site.site_title = "Story Stream API Admin Portal"
 
-admin.site.index_title = "Welcome to Authors Haven API Portal"
+admin.site.index_title = "Welcome to Story Stream API Portal"
