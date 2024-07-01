@@ -16,6 +16,7 @@ services:
     depends_on:
       - postgres
       - mailhog
+      - redis
     networks:
       - story-api
 
@@ -53,6 +54,51 @@ services:
     networks:
       - story-api
 
+
+
+  redis:
+    image: redis:7.4-rc2-alpine3.20
+    container_name: redis
+    networks:
+      - story-api
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./docker/local/django/Dockerfile
+    command: /start-celeryworker
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    depends_on:
+      - redis
+      - postgres
+      - mailhog
+    networks:
+      - story-api
+
+  flower:
+    build:
+      context: .
+      dockerfile: ./docker/local/django/Dockerfile
+    command: /start-flower
+    container_name: flower
+    volumes:
+      - flower_data:/data
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - story-api
+       
+  
   nginx:
     restart: always
     depends_on:
@@ -67,7 +113,7 @@ services:
       - "8080:80"
     networks:
       - story-api
-
+    
 networks:
   story-api:
     driver: bridge
@@ -78,3 +124,4 @@ volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
   pgadmin-data: {}
+  flower_data: {}
