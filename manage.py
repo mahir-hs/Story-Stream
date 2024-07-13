@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    #TODO: Change the settings in production
+    # TODO: Change the settings in production
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "story_api.settings.local")
     try:
         from django.core.management import execute_from_command_line
