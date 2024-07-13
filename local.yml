@@ -1,4 +1,12 @@
 services:
+  es:
+    image: elasticsearch:7.17.9
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      - story-api
   api:
     build:
       context: .
@@ -17,6 +25,7 @@ services:
       - postgres
       - mailhog
       - redis
+      - es
     networks:
       - story-api
 
