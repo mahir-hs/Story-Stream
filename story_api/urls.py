@@ -20,6 +20,7 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 urlpatterns = [
+    path("swagger.json/", schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0)),
     path(settings.ADMIN_URL, admin.site.urls),
     path("api/v1/auth/user/", CustomUserDetailsView.as_view(), name="user_details"),
