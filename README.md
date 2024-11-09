@@ -34,7 +34,7 @@ To get started with the Story Stream API, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/mahir-bot/Story-Stream.git
+    git clone https://github.com/mahir-hs/Story-Stream.git
     cd Story-Stream
     ```
 
@@ -118,7 +118,7 @@ You can use the API endpoints to interact with the Story Stream platform. Below 
 
 ## API Documentation
 
-For detailed API documentation, please visit [Story Stream API Documentation](https://mahir-bot.github.io/Story-Stream/).
+For detailed API documentation, please visit [Story Stream API Documentation](https://mahir-hs.github.io/Story-Stream/).
 
 ## Contributing
 
